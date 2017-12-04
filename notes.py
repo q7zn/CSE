@@ -111,3 +111,28 @@ while a < 10:
 # random numbers
 import random  # this should be on line 1
 print(random.randint(0, 1000))
+
+# New Python File: Warmups.py
+
+# 12.4.17
+# Write a Python function
+# which accepts the user's
+# first and last name
+# and prints them in reverse order
+# with a space in between them.
+
+# Recasting
+c = "1"
+print(c == 1)  # we have a string and an integer.
+# this should work.
+print(int(c) == 1)
+# or...
+print(c == str(1))
+
+
+# Comparisons
+
+print(1 == 1)  #use a double equal sign
+print(1 != 2) #meaning: 1 is NOT equal to 2
+print (not (1 != 1))  # "!" is the "not" operator
+print (not False)
