@@ -7,8 +7,7 @@ myName = input()
 number = random.randint(1, 50)
 print(myName + "?!?! " + "That's a terrible name! I would feel bad for you, but I'm not programmed to."
                " Anyway, " + myName + ", I am thinking of a number between 1 and 50.")
-
-global guess
+guess = ""
 
 while int(guessesTaken) < 5:
     print("Take a shot at the number I'm thinking of.")
@@ -16,6 +15,13 @@ while int(guessesTaken) < 5:
     guess = int(guess)
 
     guessesTaken = guessesTaken + 1
+
+    if guess > 50:
+        print("Dude, I said one through fifty! Is it really that hard to hit two different numbers that are almost "
+              "all the way across the keyboard from each other? You should be playing \na typing game instead...")
+
+    if guess < 1:
+        print("C'mon, man, I said one through fifty. You can't guess lower than 1 by accident! Get with the program.")
 
     if guess < number:
         print('Go higher. Your guess is too low.')
