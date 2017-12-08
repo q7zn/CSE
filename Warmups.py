@@ -25,3 +25,16 @@ def add(number_1, number_2, number_3):
 
 add(15, 18, 9000)
 add(80, 90, 100)
+
+def repeat(sentence):
+    print(sentence)
+    print(sentence)
+    print(sentence)
+
+
+repeat("hello")
+
+#heres a few fancier ways of doing the above function
+
+for x in range(3):
+    print(sentence)
