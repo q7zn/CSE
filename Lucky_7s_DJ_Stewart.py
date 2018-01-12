@@ -16,10 +16,12 @@ dice_2 = roll()
 
 while money_owned > 0:
     print("Okay. You have %s dollars. I'll take a dollar, now roll your die. Go ahead and roll." % money_owned)
+    roll()
+    roll()
     if (dice_1 + dice_2) == 7:
         print("Nice! you rolled a seven! Here's five dollars, since you won the round.")
         money_owned += 5
-    elif money_owned != 7:
+    elif (dice_1 + dice_2) != 7:
         print("Dang, that's a bummer. You rolled a %s. Roll again." % (dice_1 + dice_2))
         roll()
     money_owned -= 1
