@@ -5,8 +5,8 @@ print("You will then roll two die with six sides, and if the numbers add up to s
 print("Let's get started. Good luck!")
 
 
-def lucky_7s(dice_1, dice_2, money_owned, highest_round, most_money):
-    if money_owned < 0:
+def lucky_7s(dice_1, dice_2, round, money_owned, highest_round, most_money):
+    if money_owned > 0:
         if most_money < money_owned:
             most_money = money_owned
             highest_round = round
@@ -17,12 +17,13 @@ def lucky_7s(dice_1, dice_2, money_owned, highest_round, most_money):
         if dice_1 + dice_2 == 7:
             money_owned += 5
             print("Nice! You rolled a seven!")
-            lucky_7s(dice_1, dice_2, money_owned, highest_round, most_money)
+            lucky_7s(dice_1, dice_2, round, money_owned, highest_round, most_money)
         elif dice_1 + dice_2 != 7:
             print("You rolled a %s. That's not a seven, unfortunately. I'll keep your money." % (dice_1 + dice_2))
-            lucky_7s(dice_1, dice_2, money_owned, highest_round, most_money)
-    else: print("Congratulations, you blew all your money gambling. You lost all your money to me in %d rounds. You "
-                "had the most amount of money, %d,  at round %d." %(round, most_money, highest_round))
+            lucky_7s(dice_1, dice_2, round, money_owned, highest_round, most_money)
+    if money_owned == 0:
+        print("Congratulations, you blew all your money gambling. You lost all your money to me in %d rounds. "
+              "You had the most amount of money, %d,  at round %d." % (round, most_money, highest_round))
 
 
-lucky_7s(0, 0, 0, 15, 0, 0)
+lucky_7s(random.randint(1, 6), random.randint(1, 6), 1, 15, 1, 15)
