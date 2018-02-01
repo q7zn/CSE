@@ -184,3 +184,7 @@ print(string.punctuation)
 strTwo = "ThIs Is A VeRY oDd sEnTeNCe"
 lowercase = strTwo.lower()
 print(lowercase)
+
+s = "-"
+seq = ("a", "b", "c")  # This is sequence of strings.
+print(s.join(seq))

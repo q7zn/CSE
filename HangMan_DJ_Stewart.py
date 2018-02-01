@@ -1,34 +1,38 @@
 import random
 import string
-'''
-general guide for hangman
-make a word bank, ten items
-pick a random item from the list
-take in a letter and add it to a list of letters_guessed
-hide and reveal letters
-create win condition
-'''
 
 guesses_left = 10
 letters_guessed = list(string.punctuation + " ")
 
-word_list = ["hidden word", "word is hidden", "computer class", "Mister Wiebe's class", "find the way", "whiteboard",
+word_list = ["hidden word", "word is hidden", "computer class", "mister wiebe's class", "find the way", "whiteboard",
              "desktop", "painting", "t pose", "keyboard"]
 
 
 hidden_word = random.choice(word_list)
-print(hidden_word)
+print(hidden_word)  # comment this out before turning in
 
 
-while hidden_word != "stop":
+output = ["*"]
+while guesses_left > 0 and "*" in output:
     output = []
     for letter in hidden_word:
         if letter in letters_guessed:
             output.append(letter)
         else:
             output.append("*")
-    print(output)
+    s = ""
+    print(s.join(output))
+
+    if "*" not in output:
+        print("Congratulations! You guessed the word!")
+        continue
 
     guessed_letter = input("Guess any letter in the alphabet.   ")
     letters_guessed.append(guessed_letter)
+
+    if guessed_letter not in hidden_word:
+        guesses_left -= 1
+        print("Nope. That's not a letter in the word. You have %s guesses left." % guesses_left)
+    if guesses_left == 0:
+        print('You lost. The word you were attempting to guess was "%s."' % hidden_word)
     # print(letters_guessed)
