@@ -5,11 +5,11 @@ guesses_left = 10
 letters_guessed = list(string.punctuation + " ")
 
 word_list = ["hidden word", "word is hidden", "computer class", "mister wiebe's class", "find the way", "whiteboard",
-             "desktop", "painting", "t pose", "keyboard"]
+             "desktop", "painting", "t pose tuesday", "keyboard"]
 
 
 hidden_word = random.choice(word_list)
-print(hidden_word)  # comment this out before turning in
+#  print(hidden_word)  # comment this out before turning in
 
 
 output = ["*"]
@@ -24,7 +24,7 @@ while guesses_left > 0 and "*" in output:
     print(s.join(output))
 
     if "*" not in output:
-        print("Congratulations! You guessed the word!")
+        print("Congratulations! You guessed the word! You had %s guesses remaining. Good job!" % guesses_left)
         continue
 
     guessed_letter = input("Guess any letter in the alphabet.   ")
@@ -36,3 +36,4 @@ while guesses_left > 0 and "*" in output:
     if guesses_left == 0:
         print('You lost. The word you were attempting to guess was "%s."' % hidden_word)
     # print(letters_guessed)
+
