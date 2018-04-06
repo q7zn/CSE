@@ -1,5 +1,6 @@
 
 current_node = hereford_map['SPAWN']
+miscCommands = ['YEET', 'JUMP', 'SHOUT', 'CRY', 'YELL']
 hereford_map = {
     'SPAWN': {
         'NAME': 'Stair Alley',
@@ -60,7 +61,6 @@ hereford_map = {
      },
 
 }
-miscCommands = ['YEET', 'JUMP', 'SHOUT', 'CRY', 'YELL']
 directions = ['NORTH', 'SOUTH', 'EAST', 'WEST', 'NORTHWEST', 'SOUTHWEST', ' NORTHEAST', 'SOUTHEAST']
 suicide = 'KILL SELF'
 while True:

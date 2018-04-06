@@ -34,8 +34,12 @@ basement_stair = Room('Basement Staircase', 'You are on a staircase and there is
 briefing_room = Room('Briefing Room', 'You are in a room with a few projectors and some desks. There is a door leading '
                                       'outside to your east, and there is a hallway to your west. One of the desks, '
                                       'the one to your southwest, has a slightly open drawer.', 'basement_stair', None,
-                                      'basement_stair', 'basement_corridor', None, 'brief_desk', '',)
-front_access = Room()
+                                      'basement_stair', 'basement_corridor', None, 'brief_desk', None, 'brief_desk',
+                                      None, None)
+front_access = Room('Front Access', 'A door wide enough for two people to enter side by side stands to your south. '
+                                    'There is a set of stairs leading down to your east.', None, 'main_corridor',
+                                    'basement_stair', )
+main_corridor = Room()
 brief_desk = Room()
 laundry_room = Room()
 laundry_inner = Room()
