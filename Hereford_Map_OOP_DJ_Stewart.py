@@ -38,8 +38,11 @@ briefing_room = Room('Briefing Room', 'You are in a room with a few projectors a
                                       None, None)
 front_access = Room('Front Access', 'A door wide enough for two people to enter side by side stands to your south. '
                                     'There is a set of stairs leading down to your east.', None, 'main_corridor',
-                                    'basement_stair', )
-main_corridor = Room()
+                                    'basement_stair', None, None, None, None, None, None, None)
+main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms on both sides. There is an exit '
+                                      'to the outside to your north, a kitchen to your south, and another hallway on '
+                                      'your southwest. There is a room with some TVs in another room to your west, and '
+                                      'a ')
 brief_desk = Room()
 laundry_room = Room()
 laundry_inner = Room()
