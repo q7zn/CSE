@@ -42,8 +42,19 @@ front_access = Room('Front Access', 'A door wide enough for two people to enter 
 main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms on both sides. There is an exit '
                                       'to the outside to your north, a kitchen to your south, and another hallway on '
                                       'your southwest. There is a room with some TVs in another room to your west, and '
-                                      'a ')
-brief_desk = Room()
+                                      'a room with a piano in the middle to your northeast. A room with a table and '
+                                      'creepy mannequins sitting around it is to your southeast, and a door leading '
+                                      'outside to your north, and stairs leading up and down to your south.',
+                                      'front_access', 'main_stairs_1st', None, 'garage_corridor', 'tv_room',
+                                      'kitchen', 'piano_lounge', 'dining_room', None, None)
+main_stairs_1st = Room('Main Stairs', "You are on a staircase that leads up to the second floor and down to the "
+                                      "basement. There is a hallway to your north with a lot of doors in it.",
+                                      'main_corridor', None, None, None, None, None, None, None, 'main_stairs_2nd',
+                                      'main_stairs_bm')
+brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, behind a desk. The drawer, upon closer'
+                                   'inspection, is locked, but could easily be forced open. You can move northeast '
+                                   'outside, or northwest to the corridor.', None, None, None, None, 'bm_corridor',
+                                   None, 'basement_stair', None, None, None)
 laundry_room = Room()
 laundry_inner = Room()
 storage_corridor = Room()
@@ -51,7 +62,6 @@ mat_depot = Room()
 dummy_depot = Room()
 master_bed = Room()
 main_stairs_bm = Room()
-main_stairs_1st = Room()
 main_stairs_2nd = Room()
 main_stairs_3rd = Room()
 storage = Room()
@@ -66,7 +76,7 @@ kitchen = Room()
 maintenance = Room()
 armory = Room()
 lockers = Room()
-basement_corridor = Room()
+bm_corridor = Room()
 f_1st_corridor = Room()
 office = Room()
 office_closet = Room()
@@ -93,7 +103,7 @@ while True:
         except KeyError:
             print('Your legs are not programmed to go this way.')
     elif command == 'YEET':
-        print('This thing is empty! YEET!!')
+        print('This b**** is empty! YEET!!')
     elif command == 'JUMP':
         print('*jumping intensifies*')
     elif command in ['SHOUT', 'YELL']:
