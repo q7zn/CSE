@@ -23,23 +23,32 @@ spawn = Room('Stair Alley', 'You wake up and find yourself in an alley. There ar
              'north that leads up and one to your northwest that leads down.', None, None, None, 'side_stair',
              'basement_stair', None, None, None, None, None)
 side_stair = Room('Side Staircase', 'You are on a staircase with two flights that leads up to the second and third '
-                  'floor of a large building. \nYou stand on the second floor platform with '
-                  'a door to your west. The third floor door is to your south. There is an alley to '
-                  'your east.', None, 'storage_corridor', 'spawn', 'laundry_room', 'basement_entrance', None, None,
-                  None, None, None)
+                  'floor of a large building. \nYou stand on the second floor platform with  door to your west. The' 
+                  'third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
+                  'spawn', 'laundry_room', 'basement_entrance', None, None, None, None, None)
 basement_stair = Room('Basement Staircase', 'You are on a staircase and there is a path that looks from your angle to '
                       'be a dead end to your south, though it may be worth checking out. There are stairs to your '
                       'east and west.', None, 'briefing_room', 'side_stair', 'front_access', None, None, None, None,
                       None, None)
 briefing_room = Room('Briefing Room', 'You are in a room with a few projectors and some desks. There is a door leading '
-                                      'outside to your east, and there is a hallway to your west. One of the desks, '
-                                      'the one to your southwest, has a slightly open drawer.', 'basement_stair', None,
-                                      'basement_stair', 'basement_corridor', None, 'brief_desk', None, 'brief_desk',
-                                      None, None)
+                     'outside to your east, and there is a hallway to your west. One of the desks, the one to your '
+                     'southwest, has a slightly open drawer.', 'basement_stair', None, 'basement_stair',
+                     'basement_corridor', None, 'brief_desk', None, 'brief_desk', None, None)
 front_access = Room('Front Access', 'A door wide enough for two people to enter side by side stands to your south. '
-                                    'There is a set of stairs leading down to your east.', None, 'main_corridor',
-                                    'basement_stair', )
-main_corridor = Room()
+                    'There is a set of stairs leading down to your east.', None, 'main_corridor', 'basement_stair',
+                    None, None, None, None, None, None, None)
+garage_corridor = Room('Garage Hall', 'You are in a hallway that is not too long. There is a garage to your west, and '
+                       'a long corridor to your east. There is a kitchen to your south.', None, 'kitchen',
+                       'main_corridor', 'garage', None, None, None, None, None, None)
+main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms on both sides. There is an exit to the'
+                     ' outside to your north, a kitchen to your south, and another hallway to your west. There is a '
+                     'room with some TVs in another room to your northwest, and a kitchen to the southwest of your '
+                     'position. There are stairs that lead up and down to the south. To the southeast is a room with a '
+                     'table in the center, with quite a few creepy mannequins around it. Your gut tells you to avoid '
+                     "that room, but you've never been one to listen to your gut.", 'front_access', 'main_stairs_1st',
+                     'dining_room', 'garage_corridor', 'tv_room', 'kitchen', 'piano_lounge', 'dining_room', None, None)
+main_stairs = Room('Main Stairs', 'You are on a staircase that leads both up and down. There is a hallway to your '
+                   'north.', 'main_corridor', None, None, None, None, None, None, None, 'stairs_2nd', 'stairs_bm')
 brief_desk = Room()
 laundry_room = Room()
 laundry_inner = Room()
@@ -47,14 +56,12 @@ storage_corridor = Room()
 mat_depot = Room()
 dummy_depot = Room()
 master_bed = Room()
-main_stairs_bm = Room()
-main_stairs_1st = Room()
-main_stairs_2nd = Room()
-main_stairs_3rd = Room()
+stairs_bm = Room()
+stairs_2nd = Room()
+stairs_3rd = Room()
 storage = Room()
 workshop = Room()
 terrace = Room()
-garage_corridor = Room()
 piano_lounge = Room()
 tv_room = Room()
 dining_room = Room()
