@@ -15,6 +15,7 @@
         <entry file="file://$PROJECT_DIR$/Hereford_Map_OOP_DJ_Stewart.py">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="136">
               <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
             </state>
@@ -29,6 +30,10 @@
 =======
             <state relative-caret-position="102">
               <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+=======
+            <state relative-caret-position="209">
+              <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
               <folding />
 >>>>>>> 12e42ecff0ef264f596280a6f75994fe8d7602a5
             </state>
@@ -38,8 +43,14 @@
       <file leaf-file-name="DJ Stewart - Characters.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DJ Stewart - Characters.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="799">
               <caret line="47" selection-start-line="20" selection-end-line="47" />
+=======
+            <state relative-caret-position="374">
+              <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+              <folding />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
             </state>
           </provider>
         </entry>
@@ -109,7 +120,11 @@
         <option value="$PROJECT_DIR$/DJ Stewart - C.Y.O.A..py" />
         <option value="$PROJECT_DIR$/items_DJ_Stewart.py" />
         <option value="$PROJECT_DIR$/DJ_Stewart_Dictionary_Hereford_Map.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Guessgame_DJ_Stewart.py" />
+=======
+        <option value="$PROJECT_DIR$/pick_up.py" />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
         <option value="$PROJECT_DIR$/Hereford_Map_OOP_DJ_Stewart.py" />
       </list>
     </option>
@@ -126,8 +141,13 @@
     <panes />
   </component>
   <component name="PropertiesComponent">
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Lucky_7's_DJ_Stewart.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+=======
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/DJ_Stewart_Dictionary_Hereford_Map.py" />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -319,6 +339,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/DJ Stewart - C.Y.O.A..py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -336,6 +357,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
     <entry file="file://$PROJECT_DIR$/Lucky_7s_DJ_Stewart.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -623,20 +646,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DJ Stewart - Characters.py">
+    <entry file="file://$PROJECT_DIR$/DJ Stewart - C.Y.O.A..py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="799">
           <caret line="47" selection-start-line="20" selection-end-line="47" />
+=======
+        <state relative-caret-position="782">
+          <caret line="46" column="36" lean-forward="false" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <folding />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DJ Stewart - C.Y.O.A..py">
+    <entry file="file://$PROJECT_DIR$/DJ_Stewart_Dictionary_Hereford_Map.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="782">
           <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
           <folding>
             <marker date="1523223427782" expanded="true" signature="1251:1256" ph="..." />
           </folding>
+=======
+        <state relative-caret-position="515">
+          <caret line="42" column="8" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pick_up.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
         </state>
       </provider>
     </entry>
@@ -647,8 +688,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DJ_Stewart_Dictionary_Hereford_Map.py">
+    <entry file="file://$PROJECT_DIR$/DJ Stewart - Characters.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
         <state relative-caret-position="425">
           <caret line="25" column="42" selection-start-line="25" selection-start-column="42" selection-end-line="25" selection-end-column="42" />
@@ -677,17 +719,27 @@
         <state relative-caret-position="515">
           <caret line="42" column="8" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
 >>>>>>> 12e42ecff0ef264f596280a6f75994fe8d7602a5
+=======
+        <state relative-caret-position="374">
+          <caret line="22" column="24" lean-forward="false" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Hereford_Map_OOP_DJ_Stewart.py">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state relative-caret-position="136">
           <caret line="42" column="62" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
 =======
         <state relative-caret-position="102">
           <caret line="44" column="41" lean-forward="false" selection-start-line="44" selection-start-column="41" selection-end-line="44" selection-end-column="41" />
+=======
+        <state relative-caret-position="209">
+          <caret line="57" column="21" lean-forward="true" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
+>>>>>>> c20cea124e28bb88291887b6603acc645fdf1c93
           <folding />
 >>>>>>> 12e42ecff0ef264f596280a6f75994fe8d7602a5
         </state>
