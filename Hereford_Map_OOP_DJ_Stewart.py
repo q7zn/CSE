@@ -58,7 +58,11 @@ brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, 
                                    'outside, or northwest to the corridor.', None, None, None, None, 'bm_corridor',
                                    None, 'basement_stair', None, None, None)
 
-laundry_room = Room()
+laundry_room = Room('Laundry Room', 'You are in a room with a wall directly in front of you that spans almost the whole'
+                    ' way to the wall to your south. \nThere is an opening, however, to your southwest end of the '
+                    'extended wall. There is a door to your east. There are many washing machines and related '
+                    '\nappliances in the room. They might have something in them.', 'laundry_machines', None,
+                    'side_stairs', None, None, 'laundry_inner', None, None, None, None)
 laundry_inner = Room()
 storage_corridor = Room()
 mat_depot = Room()
