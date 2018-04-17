@@ -76,6 +76,7 @@ storage_corridor_e = Room('Storage Corridor East', 'You are in a long hallway wi
                           'the corner of the hall.', None, None, 'side_stair', None, None, None, None, None, None, None)
 storage_corridor_n= Room('Storage Corridor', 'You are in the corner of the hallway. You can see down the hall to the '
                          'east, ')
+# test
 storage_corridor_s= Room()
 mat_depot = Room()
 dummy_depot = Room()
