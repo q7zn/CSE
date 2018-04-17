@@ -63,8 +63,20 @@ laundry_room = Room('Laundry Room', 'You are in a room with a wall directly in f
                     'extended wall. There is a door to your east. There are many washing machines and related '
                     '\nappliances in the room. They might have something in them.', 'laundry_machines', None,
                     'side_stairs', None, None, 'laundry_inner', None, None, None, None)
-laundry_inner = Room()
-storage_corridor = Room()
+laundry_inner = Room('Laundry Room', 'You have moved into the part of the laundry room that is closer to the inside of '
+                     'the building. There is a wall that extends from the north end of the room almost to the south '
+                     'wall, but the there is an opening. It looks odd from this side, almost like it was blown open by'
+                     " a breach charge. You do not know why you know what a breaching charge's explosion would look "
+                     "like. There is a path that leads to the outer part of the room to the southwest and a path into "
+                     'a bedroom on your west.', None, None, None, 'master_bed', None, 'laundry_room', None, None, None,
+                     None)
+storage_corridor_e = Room('Storage Corridor East', 'You are in a long hallway with a sharp turn in it to your west. You'
+                          'cannot see around the corner. There is a door that leads outside and to stairs going down to'
+                          ' your east. You can go west down the hall or south into a work area. There is a camera in '
+                          'the corner of the hall.', None, None, 'side_stair', None, None, None, None, None, None, None)
+storage_corridor_n= Room('Storage Corridor', 'You are in the corner of the hallway. You can see down the hall to the '
+                         'east, ')
+storage_corridor_s= Room()
 mat_depot = Room()
 dummy_depot = Room()
 master_bed = Room()
