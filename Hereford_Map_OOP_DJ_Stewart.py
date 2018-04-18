@@ -50,14 +50,11 @@ main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms
 main_stairs = Room('Main Stairs', 'You are on a staircase that leads both up and down. There is a hallway to your '
                    'north.', 'main_corridor', None, None, None, None, None, None, None, 'stairs_2nd', 'stairs_bm')
 main_stairs_1st = Room('Main Stairs', "You are on a staircase that leads up to the second floor and down to the "
-                                      "basement. There is a hallway to your north with a lot of doors in it.",
-                                      'main_corridor', None, None, None, None, None, None, None, 'main_stairs_2nd',
-                                      'main_stairs_bm')
+                       "basement. There is a hallway to your north with a lot of doors in it.main_corridor", None, None,
+                       None, None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
 brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, behind a desk. The drawer, upon closer'
-                                   'inspection, is locked, but could easily be forced open. You can move northeast '
-                                   'outside, or northwest to the corridor.', None, None, None, None, 'bm_corridor',
-                                   None, 'basement_stair', None, None, None)
-
+                  'inspection, is locked, but could easily be forced open. You can move northeast outside, or northwest'
+                  'to the corridor.', None, None, None, None, 'bm_corridor', None, 'basement_stair', None, None, None)
 laundry_room = Room('Laundry Room', 'You are in a room with a wall directly in front of you that spans almost the whole'
                     ' way to the wall to your south. \nThere is an opening, however, to your southwest end of the '
                     'extended wall. There is a door to your east. There are many washing machines and related '
@@ -74,10 +71,13 @@ storage_corridor_e = Room('Storage Corridor East', 'You are in a long hallway wi
                           'cannot see around the corner. There is a door that leads outside and to stairs going down to'
                           ' your east. You can go west down the hall or south into a work area. There is a camera in '
                           'the corner of the hall.', None, None, 'side_stair', None, None, None, None, None, None, None)
-storage_corridor_n= Room('Storage Corridor', 'You are in the corner of the hallway. You can see down the hall to the '
-                         'east, ')
+storage_corridor_n = Room('Storage Corridor', 'You are in the corner of the hallway. You can see down the hall to the '
+                          'east and to the south. There is a room with a bunch of random stuff that looks fitting to '
+                          'where you seem to be, which appears to be an abandoned military base to your west. There is '
+                          'more hallway to your south.', None, 'storage_corridor_s', 'storage_corridor_e', 'mat_depot',
+                          None, None, None, None, None, None)
 # test
-storage_corridor_s= Room()
+storage_corridor_s = Room('Storage Corridor', 'You are at the south end of the hall. ', )
 mat_depot = Room()
 dummy_depot = Room()
 master_bed = Room()

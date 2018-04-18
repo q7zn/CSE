@@ -29,6 +29,8 @@ class Character(object):
         self.inventory = inventory
         self.target = target
 
+
+
     def injure(self):
         self.health -= 40
 
