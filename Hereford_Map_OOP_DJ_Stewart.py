@@ -71,15 +71,24 @@ storage_corridor_e = Room('Storage Corridor East', 'You are in a long hallway wi
                           'cannot see around the corner. There is a door that leads outside and to stairs going down to'
                           ' your east. You can go west down the hall or south into a work area. There is a camera in '
                           'the corner of the hall.', None, None, 'side_stair', None, None, None, None, None, None, None)
-storage_corridor_n = Room('Storage Corridor', 'You are in the corner of the hallway. You can see down the hall to the '
-                          'east and to the south. There is a room with a bunch of random stuff that looks fitting to '
-                          'where you seem to be, which appears to be an abandoned military base to your west. There is '
-                          'more hallway to your south.', None, 'storage_corridor_s', 'storage_corridor_e', 'mat_depot',
-                          None, None, None, None, None, None)
+storage_corridor_n = Room('Storage Corridor Northeast', 'You are in the corner of the hallway. You can see down the '
+                          'hall to the east and to the south. There is a room to your west with a bunch of things that '
+                          'look like place mats. There is more hallway to your south.', None, 'storage_corridor_s',
+                          'storage_corridor_e', 'mat_depot', None, None, None, None, None, None)
 # test
-storage_corridor_s = Room('Storage Corridor', 'You are at the south end of the hall. ', )
-mat_depot = Room()
-dummy_depot = Room()
+storage_corridor_s = Room('Storage Corridor South', 'You are at the south end of the hall and can see north. You see a '
+                          'security camera to the north, and it is glowing red. You have a feeling you are being '
+                          'watched. To your west lies a room with random things that seem to be fitting to the '
+                          'environment, which to you appears to be an abandoned military base. There is a workshop to '
+                          'your east and stairs leading down on your south.', 'storage_corridor_n', 'main_stairs_3rd',
+                          'workshop', 'storage', None, None, None, None, None, None)
+mat_depot = Room('Ballistic Mat Depot', 'Upon closer inspection, the mats appear to be some kind of armor plating.'
+                 "These may be useful later. There is an exit to the east.", None, None, 'storage_corridor_s', None,
+                 None, None, None, None, None, None)
+dummy_depot = Room('Dummy Depot', 'As you walk in the room, one of the dummies reaches out, snapping and breaking from'
+                   'being inflexible, grabbing for you. It speaks with a static rasp, crackling outздесь небезопасно, '
+                    "уходите сейчас, which you somehow know to mean 'It is not safe here, leave now.' in Russian. You"
+                    ' now know it is not safe "here," wherever "here" may be, though you do not know the reason. ',)
 master_bed = Room()
 stairs_bm = Room()
 stairs_2nd = Room()
@@ -89,7 +98,6 @@ main_stairs_2nd = Room()
 main_stairs_3rd = Room()
 storage = Room()
 workshop = Room()
-terrace = Room()
 piano_lounge = Room()
 tv_room = Room()
 dining_room = Room()
@@ -123,7 +131,7 @@ while True:
             name_of_node = current_node['PATHS'][command]
             current_node = [name_of_node]
         except KeyError:
-            print('Your legs are not programmed to go this way.')
+            print("That's a wall. Those are typically solid and not a lot of things your size can pass through.")
     elif command == 'YEET':
         print('This b**** is empty! YEET!!')
     elif command == 'JUMP':
@@ -135,8 +143,8 @@ while True:
     elif command == suicide:
         print('Is that really how you want to go out? By just taking your own life?')
         if command == 'YES':
-            print('Well, alright then. Your head spontaneously implodes and Lord Kek comes down to laugh at you. Even '
-                  'the internet gods recognize your cowardice.')
+            print('Well, alright then. You plunge your knife into your chest, and as you feel your blood slowly running'
+                  'out, your world slowly blackens into nothingness.')
         if command == 'NO':
             print('Thank you for making the right choice. If you ever feel like giving up, remember to talk to someone'
                   ' who professional counselor.')
