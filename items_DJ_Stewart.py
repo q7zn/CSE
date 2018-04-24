@@ -1,3 +1,4 @@
+#  grenade archetypes (smokes / flash / of course the frags too)
 class Item(object):
     def __init__(self, name, weight, value, description):
         self.name = name
@@ -11,6 +12,11 @@ class Item(object):
     def pick_up(self):
         print("You pick up the item")
 
+
+class QuestItem(Item):
+    def __init__(self, name, points, description):
+        super(QuestItem, self).__init__(name, points, description)
+        self.points = points
 
 class Weapon(Item):
     def __init__(self, name, description, ammo_type, size):

@@ -19,17 +19,17 @@ class Room(object):
         current_node = globals()[getattr(self, direction)]
 
 
-spawn = Room('Stair Alley', 'You wake up and find yourself in an alley. There are two sets of stairs,\none to your '
-             'north that leads up and one to your northwest that leads down.', None, None, None, 'side_stair',
-             'basement_stair', None, None, None, None, None)
+spawn = Room('Stair Alley', 'You wake up and find yourself in an alley with no recollection of what happened or why you'
+             ' are here. There are two sets of stairs,\none to your north that leads up and one to your northwest that '
+             'leads down.', None, None, None, 'side_stair', 'basement_stair', None, None, None, None, None)
 side_stair = Room('Side Staircase', 'You are on a staircase with two flights that leads up to the second and third '
                   'floor of a large building. \nYou stand on the second floor platform with  door to your west. The' 
                   'third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
                   'spawn', 'laundry_room', 'basement_entrance', None, None, None, None, None)
-basement_stair = Room('Basement Staircase', 'You are on a staircase and there is a path that looks from your angle to '
-                      'be a dead end to your south, though it may be worth checking out. There are stairs to your '
-                      'east and west.', None, 'briefing_room', 'side_stair', 'front_access', None, None, None, None,
-                      None, None)
+basement_stair_out = Room('Basement Staircase', 'You are on a staircase and there is a path that looks from your angle '
+                          'to be a dead end to your south, though it may be worth checking out. There are stairs to '
+                          'your east and west.', None, 'briefing_room', 'side_stair', 'front_access', None, None, None,
+                          None, None, None)
 briefing_room = Room('Briefing Room', 'You are in a room with a few projectors and some desks. There is a door leading '
                      'outside to your east, and there is a hallway to your west. One of the desks, the one to your '
                      'southwest, has a slightly open drawer.', 'basement_stair', None, 'basement_stair',
@@ -47,11 +47,9 @@ main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms
                      'table in the center, with quite a few creepy mannequins around it. Your gut tells you to avoid '
                      "that room, but you've never been one to listen to your gut.", 'front_access', 'main_stairs_1st',
                      None, 'garage_corridor', 'tv_room', 'kitchen', 'piano_lounge', 'dining_room', None, None)
-main_stairs = Room('Main Stairs', 'You are on a staircase that leads both up and down. There is a hallway to your '
-                   'north.', 'main_corridor', None, None, None, None, None, None, None, 'stairs_2nd', 'stairs_bm')
-main_stairs_1st = Room('Main Stairs', "You are on a staircase that leads up to the second floor and down to the "
-                       "basement. There is a hallway to your north with a lot of doors in it.main_corridor", None, None,
-                       None, None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
+main_stairs_1st = Room('Main Stairs', 'You are on a staircase that leads up to the second floor and down to the '
+                       'basement. There is a hallway to your north with lots of doors in it', 'main_corridor', None, None,
+                       None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
 brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, behind a desk. The drawer, upon closer'
                   'inspection, is locked, but could easily be forced open. You can move northeast outside, or northwest'
                   'to the corridor.', None, None, None, None, 'bm_corridor', None, 'basement_stair', None, None, None)
@@ -86,16 +84,23 @@ mat_depot = Room('Ballistic Mat Depot', 'Upon closer inspection, the mats appear
                  "These may be useful later. There is an exit to the east.", None, None, 'storage_corridor_s', None,
                  None, None, None, None, None, None)
 dummy_depot = Room('Dummy Depot', 'As you walk in the room, one of the dummies reaches out, snapping and breaking from'
-                   'being inflexible, grabbing for you. It speaks with a static rasp, crackling outздесь небезопасно, '
-                    "уходите сейчас, which you somehow know to mean 'It is not safe here, leave now.' in Russian. You"
-                    ' now know it is not safe "here," wherever "here" may be, though you do not know the reason. ',)
-master_bed = Room()
-stairs_bm = Room()
-stairs_2nd = Room()
+                   'being inflexible, grabbing for you. It speaks with a static rasp, crackling out "здесь '
+                   "небезопасно уходите сейчас, which you somehow know to mean 'It is not safe here, leave now.' in "
+                   'Russian. You now know it is not safe "here," wherever "here" may be, though you do not know the '
+                   'reason. There is a door to the workshop to your north.', 'workshop', None, None, None, None, None,
+                   None, None, None, None)
+master_bed = Room('Master Bedroom', 'You are in a bedroom with a box of supplies on a shelf. You see them but do not '
+                  'know for sure what they are for. They are all round, some are pointed and some are flat, and there '
+                  'are others still that look like grenades, but less lethal and more cylindrical. They all have metal '
+                  'ends. They all feel dangerous, but some seem like you need a bigger tool to use them. There is a '
+                  'bathroom to your southeast and a laundry room to your northeast. A short corridor lies to your '
+                  'south.', None, 'f_2nd_corridor', None, None, None, None, 'laundry_inner', 'bathroom', None, None)
+basement_stair_in = Room('Basement Stairs', 'You are on a stair case that leads down to basement corridor and up to the'
+                         ' first floor.', 'basement_corridor', None, None, None, None, None, None, None,
+                         'main_stairs', None)
+stairs_2nd = Room('Second Floor Stairs', 'You are on a flight of stairs that lead up to the third floor and down to the'
+                  'first floor.', None, None, None, None, None, None, None, None, None, None)
 stairs_3rd = Room()
-main_stairs_bm = Room()
-main_stairs_2nd = Room()
-main_stairs_3rd = Room()
 storage = Room()
 workshop = Room()
 piano_lounge = Room()
@@ -108,6 +113,7 @@ armory = Room()
 lockers = Room()
 bm_corridor = Room()
 f_1st_corridor = Room()
+f_2nd_corridor = Room()
 office = Room()
 office_closet = Room()
 kids_bed = Room()

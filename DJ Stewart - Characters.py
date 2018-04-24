@@ -46,4 +46,3 @@ class Terrorist(Character):
     def __init__(self, name, description, health, life, dialogue, status_effect, inventory, target):
         super(Terrorist, self).__init__(name, description, health, dialogue, status_effect, inventory, target)
         self.life = life
-
