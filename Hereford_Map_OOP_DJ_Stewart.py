@@ -98,9 +98,11 @@ master_bed = Room('Master Bedroom', 'You are in a bedroom with a box of supplies
 basement_stair_in = Room('Basement Stairs', 'You are on a stair case that leads down to basement corridor and up to the'
                          ' first floor.', 'basement_corridor', None, None, None, None, None, None, None,
                          'main_stairs', None)
-stairs_2nd = Room('Second Floor Stairs', 'You are on a flight of stairs that lead up to the third floor and down to the'
-                  'first floor.', None, None, None, None, None, None, None, None, None, None)
-stairs_3rd = Room()
+stairs_2nd = Room('Second Floor Stairs', 'You are on a flight of stairs that leads up to the third floor, and down to '
+                  'the first floor. There is also a path north to a short hallway.', None, None, None, None, None, None,
+                  None, None, 'stairs_3rd', 'main_stairs_1st')
+stairs_3rd = Room('Third floor stairs', 'There is a bent corridor to your north and the second floor is below you.',
+                  'storage_corridor_s', None,)
 storage = Room()
 workshop = Room()
 piano_lounge = Room()
