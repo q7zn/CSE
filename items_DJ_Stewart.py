@@ -1,4 +1,10 @@
-#  grenade archetypes (smokes / flash / of course the frags too)
+'''
+tv remote / tv
+car battery
+AA battery
+R4C rifle, SuperNova shotgun, D50 pistol
+grenade archetypes (smokes / flash / of course the frags too)
+'''
 class Item(object):
     def __init__(self, name, weight, value, description):
         self.name = name

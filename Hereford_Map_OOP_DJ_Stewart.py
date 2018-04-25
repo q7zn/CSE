@@ -48,8 +48,8 @@ main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms
                      "that room, but you've never been one to listen to your gut.", 'front_access', 'main_stairs_1st',
                      None, 'garage_corridor', 'tv_room', 'kitchen', 'piano_lounge', 'dining_room', None, None)
 main_stairs_1st = Room('Main Stairs', 'You are on a staircase that leads up to the second floor and down to the '
-                       'basement. There is a hallway to your north with lots of doors in it', 'main_corridor', None, None,
-                       None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
+                       'basement. There is a hallway to your north with lots of doors in it', 'main_corridor', None,
+                       None, None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
 brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, behind a desk. The drawer, upon closer'
                   'inspection, is locked, but could easily be forced open. You can move northeast outside, or northwest'
                   'to the corridor.', None, None, None, None, 'bm_corridor', None, 'basement_stair', None, None, None)
@@ -68,11 +68,12 @@ laundry_inner = Room('Laundry Room', 'You have moved into the part of the laundr
 storage_corridor_e = Room('Storage Corridor East', 'You are in a long hallway with a sharp turn in it to your west. You'
                           'cannot see around the corner. There is a door that leads outside and to stairs going down to'
                           ' your east. You can go west down the hall or south into a work area. There is a camera in '
-                          'the corner of the hall.', None, None, 'side_stair', None, None, None, None, None, None, None)
-storage_corridor_n = Room('Storage Corridor Northeast', 'You are in the corner of the hallway. You can see down the '
-                          'hall to the east and to the south. There is a room to your west with a bunch of things that '
-                          'look like place mats. There is more hallway to your south.', None, 'storage_corridor_s',
-                          'storage_corridor_e', 'mat_depot', None, None, None, None, None, None)
+                          'the corner of the hall.', None, 'workshop', 'side_stair', 'storage_corridor_nw', None, None,
+                          None, None, None, None)
+storage_corridor_nw = Room('Storage Corridor Northeast', 'You are in the corner of the hallway. You can see down the '
+                           'hall to the east and to the south. There is a room to your west with a bunch of things that'
+                           ' look like place mats. There is more hallway to your south.', None, 'storage_corridor_s',
+                           'storage_corridor_e', 'mat_depot', None, None, None, None, None, None)
 # test
 storage_corridor_s = Room('Storage Corridor South', 'You are at the south end of the hall and can see north. You see a '
                           'security camera to the north, and it is glowing red. You have a feeling you are being '
@@ -102,12 +103,23 @@ stairs_2nd = Room('Second Floor Stairs', 'You are on a flight of stairs that lea
                   'the first floor. There is also a path north to a short hallway.', None, None, None, None, None, None,
                   None, None, 'stairs_3rd', 'main_stairs_1st')
 stairs_3rd = Room('Third floor stairs', 'There is a bent corridor to your north and the second floor is below you.',
-                  'storage_corridor_s', None,)
-storage = Room()
-workshop = Room()
-piano_lounge = Room()
-tv_room = Room()
-dining_room = Room()
+                  'storage_corridor_s', None, None, None, None, None, None, None, None, 'stairs_2nd')
+storage = Room('Storage', 'You are in a room with lots of supplies for the base. There are so many things that could be'
+               'of use to you it boggles you. There are a few guns, but you have a feeling there will be more in the '
+               'boxes and crates lying around but from what you can see there is a SuperNova shotgun, a R4C assault'
+               'rifle, and a Desert Eagle 50 caliber pistol. There are two metal crates that are unlocked. There is a '
+               'door to your east.', None, None, 'storage_corridor_s', None, None, None, None, None, None, None)
+workshop = Room('Workshop', 'There is a workbench and a boatload of tools you have never seen but somehow know how to '
+                'use. There are enough tools and machines to craft very complex things, maybe even small firearms. '
+                'There are doors to your north and west that lead into the storage corridor.', 'storage_corridor_e',
+                None, None, 'storage_corridor_s', None, None, None, None, None, None)
+piano_lounge = Room('Piano Lounge', 'There is a piano in the middle of the room. It appears to be in working order.'
+                    'There is a dining room to your south and a long corridor to the west.', None, 'dining_room', None,
+                    'main_corridor', None, None, None, None, None, None)
+tv_room = Room('TV Room', 'There is a TV and a chair in front of it. The remote is on the chair. There is a door to the'
+               'east.', None, None, 'main_corridor', None, None, None, None, None, None, None)
+dining_room = Room('Dining Room', 'There is a dining table with a bunch of creepy mannequins around it. There are paths'
+                   ' to your north to the piano room and west to the corridor.')
 garage = Room()
 kitchen = Room()
 maintenance = Room()
