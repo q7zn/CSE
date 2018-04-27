@@ -2,8 +2,11 @@
 tv remote / tv
 car battery
 AA battery
-R4C rifle, SuperNova shotgun, D50 pistol
+R4C rifle, SuperNova shotgun, D50 pistol SIX12 Modular shotgun, MK14 Marksman
+Rifle, M1A Carbine, Colt 1911 pistol, T-5 SMG
+frying pan (weapon) (easter egg steering wheel?)
 grenade archetypes (smokes / flash / of course the frags too)
+Adrenaline
 '''
 class Item(object):
     def __init__(self, name, weight, value, description):
