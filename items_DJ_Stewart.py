@@ -1,4 +1,4 @@
-'''
+"""
 tv remote / tv
 car battery
 AA battery
@@ -7,7 +7,9 @@ Rifle, M1A Carbine, Colt 1911 pistol, T-5 SMG
 frying pan (weapon) (easter egg steering wheel?)
 grenade archetypes (smokes / flash / of course the frags too)
 Adrenaline
-'''
+"""
+
+
 class Item(object):
     def __init__(self, name, weight, value, description):
         self.name = name
@@ -16,21 +18,25 @@ class Item(object):
         self.description = description
 
     def drop(self):
-        print("You drop the item")
+        print("You drop the %s" % self.name)
 
     def pick_up(self):
-        print("You pick up the item")
+        if self.weight < 51:
+            print("You pick up the %s" % self.name)
+        else:
+            print("You try to pick up the %s, but it is too heavy." % self.name)
 
 
 class QuestItem(Item):
     def __init__(self, name, points, description):
-        super(QuestItem, self).__init__(name, points, description)
+        super(QuestItem, self).__init__(self, name, points, description)
         self.points = points
 
+
 class Weapon(Item):
-    def __init__(self, name, description, ammo_type, size):
-        super(Weapon, self).__init__(name, description, ammo_type, size)
-        self.round = ammo_type
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
 
 
 class Wearable(Item):
@@ -60,3 +66,8 @@ class Armor(Wearable):
     def __init__(self, name, weight, value, description, defense_mod):
                 super(Armor, self).__init__(name, weight, value, description)
                 self.defense = defense_mod
+
+
+class TV_Remote(Item):
+    def __init__(self, name, weight, value, description):
+        super(TV_Remote, self).__init__()
