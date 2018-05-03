@@ -1,5 +1,4 @@
 """
-tv remote / tv
 car battery
 AA battery
 R4C rifle, SuperNova shotgun, D50 pistol SIX12 Modular shotgun, MK14 Marksman
@@ -68,6 +67,19 @@ class Armor(Wearable):
                 self.defense = defense_mod
 
 
-class TV_Remote(Item):
+class TVRemote(Item):
+    def __init__(self, name, weight, value, description, battery, inventory):
+        super(TVRemote, self).__init__(name, weight, value, description)
+        self.battery = battery
+        self.inventory = inventory
+
+    def use(self):
+        if self.battery is False:
+            print('The remote is dead.')
+        if self.battery is True:
+            print('You change the channel')
+
+
+class TV(Item):
     def __init__(self, name, weight, value, description):
-        super(TV_Remote, self).__init__()
+        super(TV, self).__init__(name, weight, value, description)

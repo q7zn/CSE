@@ -21,7 +21,7 @@ class Room(object):
 
 spawn = Room('Stair Alley', 'You wake up and find yourself in an alley with no recollection of what happened or why '
              'you\nare here. There are two sets of stairs, one to your north that leads up and one to your northwest\n'
-             'that leads down.', None, None, None, 'side_stair', 'basement_stair_out', None, None, None, None, None)
+             'that leads down.', 'side_stair', None, None, 'side_stair', 'basement_stair_out', None, None, None, None, None)
 side_stair = Room('Side Staircase', 'You are on a staircase with two flights that leads up to the second and third '
                   'floor of a large building. \nYou stand on the second floor platform with  door to your west. The' 
                   'third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
@@ -172,15 +172,15 @@ while True:
             current_node.move(command)
         except KeyError:
             print("That's a wall. Those are typically solid and not a lot of things your size can pass through those.")
-    elif command == 'YEET':
+    if command == 'YEET':
         print('This b**** is empty! YEET!!')
-    elif command == 'JUMP':
+    if command == 'JUMP':
         print('*jumping intensifies*')
-    elif command in ['SHOUT', 'YELL']:
+    if command in ['SHOUT', 'YELL']:
         print('ARRRGGHHHH!!!')
-    elif command == 'CRY':
+    if command == 'CRY':
         print('Boo hoo!')
-    elif command == suicide:
+    if command == suicide:
         print('Is that really how you want to go out? By just taking your own life?')
         if command == 'YES':
             print('Well, alright then. You plunge your knife into your chest, and as you feel your blood slowly running'
