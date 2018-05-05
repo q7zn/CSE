@@ -68,12 +68,11 @@ class Armor(Wearable):
 
 
 class TVRemote(Item):
-    def __init__(self, name, weight, value, description, battery, inventory):
+    def __init__(self, name, weight, value, description, battery):
         super(TVRemote, self).__init__(name, weight, value, description)
         self.battery = battery
-        self.inventory = inventory
 
-    def use(self):
+    def change_channel(self):
         if self.battery is False:
             print('The remote is dead.')
         if self.battery is True:
@@ -83,3 +82,29 @@ class TVRemote(Item):
 class TV(Item):
     def __init__(self, name, weight, value, description):
         super(TV, self).__init__(name, weight, value, description)
+        self.channel = 1
+
+    def watch(self):
+        if self.channel == 1:
+            self.channel = 1
+            print("You watch the news")
+        if self.channel == 2:
+            self.channel = 2
+            print("You watch the weather")
+        if self.channel == 3:
+            self.channel = 3
+            print("You watch the sports channel")
+        if self.channel > 3:
+            self.channel -= 3
+        if TVRemote.change_channel:
+            self.channel += 1
+
+
+remote1 = TVRemote('TV Remote', 1, None, 'There are buttons to change the channel', True)
+tv1 = TV('TV', 51, None, 'It is an old TV with bunny ear antennae on it.')
+tv1.watch()
+remote1.change_channel()
+tv1.watch()
+remote1.change_channel()
+tv1.watch()
+#  test, works
