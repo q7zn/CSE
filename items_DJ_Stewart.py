@@ -73,7 +73,6 @@ class Armor(Wearable):
 class Gun(Weapon):
     def __init__(self, name, description, damage, size):
         super(Weapon, self).__init__(name, description, damage, size)
-        self.round = round
 
     def fire(self):
         print('You pull the trigger and the end of the firearm explodes in a glorious, deadly flame')
@@ -108,35 +107,67 @@ class Frag(Grenade):
     def __init__(self, name, description, damage, size):
         super(Grenade, self).__init__(name, description, damage, size)
 
-class R4C(Gun):  # 39 damage, rifle round
+
+class Rifle(Gun):
     def __init__(self, name, description, damage, size, round):
         super(Weapon, self).__init__(name, description, damage, size)
-        self.round = round
+        self.damage = damage
+        self.round = RifleRound
+
+
+class Pistol(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = PistolRound
+
+
+class Shotgun(Gun):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = ShotgunRound
+
+
+class SMG(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = PistolRound
+
+
+class R4C(Rifle):  # 39 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, damage, size)
         self.damage = damage and 39
 
 
-class SuperNova(Gun):  # 48 damage, shotty* round
-    def __init__(self, name, description, damage, size, round):
-        super(Weapon, self).__init__(name, description, damage, size)
-        self.round = round
+class SuperNova(Shotgun):  # 48 damage, shotty* round
+    def __init__(self, name, description, damage, size):
+        super(Shotgun, self).__init__(name, description, damage, size)
         self.damage = damage and 48
 
-class D50(Gun):  # 71 damage, pistol round
+class D50(Pistol):  # 71 damage, pistol round
+    def __init__(self, name, description, damage, size):
+        super(Pistol, self).__init__(name, description, damage, size)
+        self.damage = damage and 71
+
+class SIX12(Shotgun):  # 45 damage, shotty* round
+    def __init__(self, name, description, damage, size):
+        super(Shotgun, self).__init__(name, description, damage, size)
+        self.damage = damage and 45
 
 
-class Six12(Gun):  # 45 damage, shotty* round
+class MK14(Rifle):  # 60 damage, rifle round
 
 
-class MK14(Gun):  # 60 damage, rifle round
+class M1A1Carbine(Rifle):  # 40 damage, rifle round
 
 
-class M1A1Carbine(Gun):  # 40 damage, rifle round
+class Colt1911(Pistol):  # 58 damage, pistol round
 
 
-class Colt1911(Gun):  # 58 damage, pistol round
-
-
-class T5smg(Gun):  # 30 damage, pistol round
+class T5smg(SMG):  # 30 damage, pistol round
 
 
 class TVRemote(Item):
@@ -171,6 +202,8 @@ class TV(Item):
         if self.channel > 3:
             self.channel -= 3
 
+
+six12one = SIX12('SIX12 Modular Shotgun', 'A bullpup 12-gauge shotgun with a revolving six-shot drum', 45, 10)
 
 """
 remote1 = TVRemote('TV Remote', 1, None, 'There are buttons to change the channel', True)
