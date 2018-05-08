@@ -4,8 +4,11 @@ AA battery
 R4C rifle, SuperNova shotgun, D50 pistol SIX12 Modular shotgun, MK14 Marksman
 Rifle, M1A Carbine, Colt 1911 pistol, T-5 SMG
 frying pan (weapon) (easter egg steering wheel?)
-grenade archetypes (smokes / flash / of course the frags too)
+grenade archetypes (flash / frag)
 Adrenaline
+pistol round
+shotty* round
+rifle round
 """
 
 
@@ -67,6 +70,75 @@ class Armor(Wearable):
                 self.defense = defense_mod
 
 
+class Gun(Weapon):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.round = round
+
+    def fire(self):
+        print('You pull the trigger and the end of the firearm explodes in a glorious, deadly flame')
+
+    def reload(self):
+        print('You slam a fresh new magazine into the %s' % self.name)
+
+
+class Grenade(Weapon):
+    def __init__(self, name, description, damage, size, blast_type, blast_size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.type = blast_type
+        self.blast = blast_size
+
+    def pull_pin(self):
+        print('You pull the pin on the grenade, but hold the spoon in place')
+
+    def drop_spoon(self):
+        print('You drop the spoon and the grenade will explode in 5 seconds')
+
+    def throw(self):
+        print('You throw the grenade as far away from you as you can')
+
+
+class Flashbang(Grenade):
+    def __init__(self, name, description, damage, size, stun_time):
+        super(Grenade, self).__init__(name, description, damage, size)
+        self.stun = stun_time
+
+
+class Frag(Grenade):
+    def __init__(self, name, description, damage, size):
+        super(Grenade, self).__init__(name, description, damage, size)
+
+class R4C(Gun):  # 39 damage, rifle round
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.round = round
+        self.damage = damage and 39
+
+
+class SuperNova(Gun):  # 48 damage, shotty* round
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.round = round
+        self.damage = damage and 48
+
+class D50(Gun):  # 71 damage, pistol round
+
+
+class Six12(Gun):  # 45 damage, shotty* round
+
+
+class MK14(Gun):  # 60 damage, rifle round
+
+
+class M1A1Carbine(Gun):  # 40 damage, rifle round
+
+
+class Colt1911(Gun):  # 58 damage, pistol round
+
+
+class T5smg(Gun):  # 30 damage, pistol round
+
+
 class TVRemote(Item):
     def __init__(self, name, weight, value, description, battery):
         super(TVRemote, self).__init__(name, weight, value, description)
@@ -85,6 +157,8 @@ class TV(Item):
         self.channel = 1
 
     def watch(self):
+        if TVRemote.change_channel:
+            self.channel += 1
         if self.channel == 1:
             self.channel = 1
             print("You watch the news")
@@ -96,15 +170,25 @@ class TV(Item):
             print("You watch the sports channel")
         if self.channel > 3:
             self.channel -= 3
-        if TVRemote.change_channel:
-            self.channel += 1
 
 
+"""
 remote1 = TVRemote('TV Remote', 1, None, 'There are buttons to change the channel', True)
 tv1 = TV('TV', 51, None, 'It is an old TV with bunny ear antennae on it.')
+
 tv1.watch()
 remote1.change_channel()
 tv1.watch()
 remote1.change_channel()
 tv1.watch()
-#  test, works
+print('\nend of test one\n')
+#  test 1, works
+
+tv1.watch()
+remote1.change_channel()
+remote1.change_channel()
+tv1.watch()
+print('\nend of test two\n')
+#  test 2, does not work as intended (tv.watch once = does not say 'you watch the news'
+#  if you put tv.watch twice at the top it works as intended. reason unknown
+"""
