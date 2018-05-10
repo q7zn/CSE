@@ -1,11 +1,4 @@
 """
-car battery
-AA battery
-R4C rifle, SuperNova shotgun, D50 pistol SIX12 Modular shotgun, MK14 Marksman
-Rifle, M1A Carbine, Colt 1911 pistol, T-5 SMG
-frying pan (weapon) (easter egg steering wheel?)
-grenade archetypes (flash / frag)
-Adrenaline
 pistol round
 shotty* round
 rifle round
@@ -35,10 +28,33 @@ class QuestItem(Item):
         self.points = points
 
 
+class CarBattery(QuestItem):
+    def __init__(self, name, points, description):
+        super(QuestItem, self).__init__(self, name, points, description)
+        self.points = points
+        self.in_car = False
+
+    def put_in_car(self):
+        print('You hook up the poles to the cables and the car is ready to roll')
+        self.in_car = True
+
+
 class Weapon(Item):
     def __init__(self, name, description, damage, size):
         super(Weapon, self).__init__(name, description, damage, size)
         self.damage = damage
+
+
+class FryingPan(Weapon):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+
+    def throw(self):
+        print('You YEET that pan so hard it hits the target and they are knocked out stone cold')
+
+    def whack(self):
+        print('You smack the target so hard the pan breaks it')
 
 
 class Wearable(Item):
@@ -73,9 +89,10 @@ class Armor(Wearable):
 class Gun(Weapon):
     def __init__(self, name, description, damage, size):
         super(Weapon, self).__init__(name, description, damage, size)
+        self.mag = 'magazine'
 
     def fire(self):
-        print('You pull the trigger and the end of the firearm explodes in a glorious, deadly flame')
+        print('You pull the trigger and the end of your %s explodes in a glorious, deadly flame' % self.name)
 
     def reload(self):
         print('You slam a fresh new magazine into the %s' % self.name)
@@ -86,15 +103,23 @@ class Grenade(Weapon):
         super(Weapon, self).__init__(name, description, damage, size)
         self.type = blast_type
         self.blast = blast_size
+        self.pin = True
+        self.spoon_dropped = False
+        self.thrown = False
 
     def pull_pin(self):
         print('You pull the pin on the grenade, but hold the spoon in place')
+        self.pin = False
 
     def drop_spoon(self):
-        print('You drop the spoon and the grenade will explode in 5 seconds')
+        if self.pin is False:
+            print('You drop the spoon and the grenade will explode in 5 seconds')
+        if self.pin is True:
+            print('You cannot drop the spoon until you pull the pin')
 
     def throw(self):
         print('You throw the grenade as far away from you as you can')
+        self.thrown = True
 
 
 class Flashbang(Grenade):
@@ -112,28 +137,28 @@ class Rifle(Gun):
     def __init__(self, name, description, damage, size, round):
         super(Weapon, self).__init__(name, description, damage, size)
         self.damage = damage
-        self.round = RifleRound
+        self.round = round
 
 
 class Pistol(Gun):
     def __init__(self, name, description, damage, size, round):
         super(Weapon, self).__init__(name, description, damage, size)
         self.damage = damage
-        self.round = PistolRound
+        self.round = round
 
 
 class Shotgun(Gun):
-    def __init__(self, name, description, damage, size):
+    def __init__(self, name, description, damage, size, round):
         super(Weapon, self).__init__(name, description, damage, size)
         self.damage = damage
-        self.round = ShotgunRound
+        self.round = round
 
 
 class SMG(Gun):
     def __init__(self, name, description, damage, size, round):
         super(Weapon, self).__init__(name, description, damage, size)
         self.damage = damage
-        self.round = PistolRound
+        self.round = round
 
 
 class R4C(Rifle):  # 39 damage, rifle round
@@ -146,28 +171,60 @@ class SuperNova(Shotgun):  # 48 damage, shotty* round
     def __init__(self, name, description, damage, size):
         super(Shotgun, self).__init__(name, description, damage, size)
         self.damage = damage and 48
+        self.mag = 'set of shells'
+
+    def fire(self):
+        print('You pull the trigger and the end of your %s explodes in a glorious, deadly flame, and you rack the pump'
+              '' % self.name)
+
+    def reload(self):
+        print('You slam a fresh set of shells into the %s' % self.name)
+
 
 class D50(Pistol):  # 71 damage, pistol round
     def __init__(self, name, description, damage, size):
         super(Pistol, self).__init__(name, description, damage, size)
         self.damage = damage and 71
 
+
 class SIX12(Shotgun):  # 45 damage, shotty* round
     def __init__(self, name, description, damage, size):
         super(Shotgun, self).__init__(name, description, damage, size)
         self.damage = damage and 45
+        self.mag = 'drum'
+
+    def reload(self):
+        print('You slam a new drum into the %s' % self.name)
 
 
 class MK14(Rifle):  # 60 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, damage, size)
+        self.damage = damage and 60
+
+
+class L85A2(Rifle):  # 47 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, damage, size)
+        self.damage = damage and 60
 
 
 class M1A1Carbine(Rifle):  # 40 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, damage, size)
+        self.damage = damage and 40
 
 
 class Colt1911(Pistol):  # 58 damage, pistol round
+    def __init__(self, name, description, damage, size):
+        super(Pistol, self).__init__(name, description, damage, size)
+        self.damage = damage and 58
 
 
 class T5smg(SMG):  # 30 damage, pistol round
+    def __init__(self, name, description, damage, size):
+        super(SMG, self).__init__(name, description, damage, size)
+        self.damage = damage and 30
 
 
 class TVRemote(Item):
@@ -188,8 +245,6 @@ class TV(Item):
         self.channel = 1
 
     def watch(self):
-        if TVRemote.change_channel:
-            self.channel += 1
         if self.channel == 1:
             self.channel = 1
             print("You watch the news")
@@ -201,9 +256,20 @@ class TV(Item):
             print("You watch the sports channel")
         if self.channel > 3:
             self.channel -= 3
+        if TVRemote.change_channel:
+            self.channel += 1
 
 
 six12one = SIX12('SIX12 Modular Shotgun', 'A bullpup 12-gauge shotgun with a revolving six-shot drum', 45, 10)
+six12one.fire()
+six12one.reload()
+r4c1 = R4C('R4C', 'A lightweight assault rifle with a 30-round magazine', 39, 15)
+r4c1.fire()
+r4c1.reload()
+sprnva1 = SuperNova('Benelli SuperNova', 'A compact tactical pump-action shotgun with good recoil control', 48, 15)
+sprnva1.fire()
+sprnva1.reload()
+
 
 """
 remote1 = TVRemote('TV Remote', 1, None, 'There are buttons to change the channel', True)
