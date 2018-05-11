@@ -64,3 +64,6 @@ class Bomber(Terrorist):
         self.life = life
         self.enemy_spotted = enemy_spotted
         self.health = 200
+
+    def suicide_bomb(self):
+        print('As the bomber runs towards you, he presses a detonator and blows his bomb vest up')
