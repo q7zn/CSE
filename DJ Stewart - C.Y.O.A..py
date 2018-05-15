@@ -159,8 +159,259 @@ f_2nd_corridor = Room('Second Floor Corridor', 'You are in the second floor corr
                       None)
 
 
+class Item(object):
+    def __init__(self, name, weight, value, description):
+        self.name = name
+        self.weight = weight
+        self.value = value
+        self.description = description
+
+    def drop(self):
+        print("You drop the %s" % self.name)
+
+    def pick_up(self):
+        if self.weight < 51:
+            print("You pick up the %s" % self.name)
+        else:
+            print("You try to pick up the %s, but it is too heavy." % self.name)
+
+
+class QuestItem(Item):
+    def __init__(self, name, points, description):
+        super(QuestItem, self).__init__(self, name, points, description)
+        self.points = points
+
+
+class CarBattery(QuestItem):
+    def __init__(self, name, points, description):
+        super(QuestItem, self).__init__(self, name, points, description)
+        self.points = points
+        self.in_car = False
+
+    def put_in_car(self):
+        print('You hook up the poles to the cables and the car is ready to roll')
+        self.in_car = True
+
+
+class Weapon(Item):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+
+
+class FryingPan(Weapon):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+
+    def throw(self):
+        print('You YEET that pan so hard it hits the target and they are knocked out stone cold')
+
+    def whack(self):
+        print('You smack the target so hard the pan breaks it')
+
+
+class Wearable(Item):
+    def __init__(self, name, weight, value, description):
+        super(Wearable, self).__init__(name, weight, value, description)
+
+    def put_on(self):
+        print("You put on the %s" % self.name)
+
+    def take_off(self):
+        print("You take off the %s" % self.name)
+
+
+class Backpack(Wearable):
+    def __init__(self, name, weight, value, description, inventory):
+        super(Backpack, self).__init__(name, weight, value, description)
+        self.inventory = inventory
+
+    def put_item_in(self):
+        print("You put the %s in the backpack" % self.name)
+
+    def take_item_out(self):
+        print("You take the %s out of the backpack" % self.name)
+
+
+class Armor(Wearable):
+    def __init__(self, name, weight, value, description, defense_mod):
+                super(Armor, self).__init__(name, weight, value, description)
+                self.defense = defense_mod
+
+
+class Gun(Weapon):
+    def __init__(self, name, description, damage, size):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.mag = 'magazine'
+
+    def fire(self):
+        print('You pull the trigger and the end of your %s explodes in a glorious, deadly flame' % self.name)
+
+    def reload(self):
+        print('You slam a fresh new magazine into the %s' % self.name)
+
+
+class Grenade(Weapon):
+    def __init__(self, name, description, damage, size, blast_type, blast_size, blast_description):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.type = blast_type
+        self.blast = blast_size
+        self.pin = True
+        self.spoon_dropped = False
+        self.thrown = False
+        self.blast_description = blast_description
+
+    def pull_pin(self):
+        print('You pull the pin on the grenade, but hold the spoon in place')
+        self.pin = False
+
+    def drop_spoon(self):
+        if self.pin is False:
+            print('You drop the spoon and the grenade will explode in 5 seconds')
+        if self.pin is True:
+            print('You cannot drop the spoon until you pull the pin')
+
+    def detonate(self):
+        print('The %s explodes and a %s ensues' % self.name, self.blast_description)
+
+    def throw(self):
+        print('You throw the grenade as far away from you as you can')
+        self.thrown = True
+
+
+class Flashbang(Grenade):  # blast description = a blinding white light and a loud bang
+    def __init__(self, name, description, damage, size, stun_time):
+        super(Grenade, self).__init__(name, description, damage, size)
+        self.stun = stun_time
+
+
+class Frag(Grenade):  # blast description = a storm of shrapnel and a boom
+    def __init__(self, name, description, damage, size):
+        super(Grenade, self).__init__(name, description, damage, size)
+
+
+class Rifle(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = round
+
+
+class Pistol(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = round
+
+
+class Shotgun(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = round
+
+
+class SMG(Gun):
+    def __init__(self, name, description, damage, size, round):
+        super(Weapon, self).__init__(name, description, damage, size)
+        self.damage = damage
+        self.round = round
+
+
+class R4C(Rifle):  # 39 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, 39, size)
+
+
+class SuperNova(Shotgun):  # 48 damage, shotty* round
+    def __init__(self, name, description, damage, size):
+        super(Shotgun, self).__init__(name, description, 48, size)
+        self.mag = 'set of shells'
+
+    def fire(self):
+        print('You pull the trigger and the end of your %s explodes in a glorious, deadly flame, and you rack the pump'
+              '' % self.name)
+
+    def reload(self):
+        print('You slam a fresh set of shells into the %s' % self.name)
+
+
+class D50(Pistol):  # 71 damage, pistol round
+    def __init__(self, name, description, damage, size):
+        super(Pistol, self).__init__(name, description, 71, size)
+
+
+class SIX12(Shotgun):  # 45 damage, shotty* round
+    def __init__(self, name, description, damage, size):
+        super(Shotgun, self).__init__(name, description, 45, size)
+        self.mag = 'drum'
+
+    def reload(self):
+        print('You slam a new drum into the %s' % self.name)
+
+
+class MK14(Rifle):  # 60 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, 60, size)
+
+
+class L85A2(Rifle):  # 47 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, 47, size)
+
+
+class M1A1Carbine(Rifle):  # 40 damage, rifle round
+    def __init__(self, name, description, damage, size):
+        super(Rifle, self).__init__(name, description, 40, size)
+
+
+class Colt1911(Pistol):  # 58 damage, pistol round
+    def __init__(self, name, description, size):
+        super(Pistol, self).__init__(name, description, 58, size)
+
+
+class T5smg(SMG):  # 30 damage, pistol round
+    def __init__(self, name, description, size):
+        super(SMG, self).__init__(name, description, 30, size)
+
+
+class TVRemote(Item):
+    def __init__(self, name, weight, value, description, battery):
+        super(TVRemote, self).__init__(name, weight, value, description)
+        self.battery = battery
+
+    def change_channel(self):
+        if self.battery is False:
+            print('The remote is dead.')
+        if self.battery is True:
+            print('You change the channel')
+
+
+class TV(Item):
+    def __init__(self, name, weight, value, description):
+        super(TV, self).__init__(name, weight, value, description)
+        self.channel = 1
+
+    def watch(self):
+        if self.channel == 1:
+            self.channel = 1
+            print("You watch the news")
+        if self.channel == 2:
+            self.channel = 2
+            print("You watch the weather")
+        if self.channel == 3:
+            self.channel = 3
+            print("You watch the sports channel")
+        if self.channel > 3:
+            self.channel -= 3
+        if TVRemote.change_channel:
+            self.channel += 1
+
+
 class Character(object):
-    def __init__(self, name, description, health, dialogue, status_effect, inventory, target):
+    def __init__(self, name, description, health, dialogue, status_effect, inventory, target,
+                 weapon=Weapon("Hands", "Your fists", 10, 1)):
         self.name = name
         self.description = description
         self.health = health
@@ -169,17 +420,16 @@ class Character(object):
         self.status_effect = status_effect
         self.inventory = inventory
         self.target = target
+        self.weapon = weapon
 
-    def injure(self):
-        self.health -= 40
-        print('%s is hurt and loses 40 health' % self.name)
+    def injure(self, damage):
+        self.health -= damage
+        print('%s is hurt and loses %s health' % self.name, damage)
 
     def attack(self, target):
         hit_chance = random.randint(1, 100)
         if hit_chance >= 50:
-            target.injure()
-        else:
-            target.injure = False
+            target.injure(self.weapon.damage)
 
     def death(self):
         print('The %s dies' % self.name)
@@ -208,6 +458,7 @@ class Bomber(Terrorist):
 
     def suicide_bomb(self):
         print('As the bomber runs towards you, he presses a detonator and blows his bomb vest up')
+        self.health -= 290
 
 
 current_node = spawn
@@ -227,15 +478,15 @@ while True:
             current_node.move(command)
         except KeyError:
             print("That's a wall. Those are typically solid and not a lot of things your size can pass through those.")
-    if command == 'YEET':
+    elif command == 'YEET':
         print('This b**** is empty! YEET!!')
-    if command == 'JUMP':
+    elif command == 'JUMP':
         print('*jumping intensifies*')
-    if command in ['SHOUT', 'YELL']:
+    elif command in ['SHOUT', 'YELL']:
         print('ARRRGGHHHH!!!')
-    if command == 'CRY':
+    elif command == 'CRY':
         print('Boo hoo!')
-    if command == suicide:
+    elif command == suicide:
         print('Is that really how you want to go out? By just taking your own life?')
         if command == 'YES':
             print('Well, alright then. You plunge your knife into your chest, and as you feel your blood slowly running'
