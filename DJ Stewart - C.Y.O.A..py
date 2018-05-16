@@ -22,13 +22,14 @@ class Room(object):
         current_node = globals()[getattr(self, direction)]
 
 
+
 spawn = Room('Stair Alley', 'You wake up and find yourself in an alley with no recollection of what happened or why '
              'you\nare here. There are two sets of stairs, one to your north that leads up and one to your northwest\n'
              'that leads down.', 'side_stair', None, None, 'side_stair', 'basement_stair_out', None, None, None, None,
              None)
 side_stair = Room('Side Staircase', 'You are on a staircase with two flights that leads up to the second and third '
-                  'floor of a large building. \nYou stand on the second floor platform with  door to your west. The' 
-                  'third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
+                  'floor of a large building. \nYou stand on the second floor platform with a door to your west. \nThe' 
+                  ' third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
                   'spawn', 'laundry_room', 'basement_entrance', None, None, None, None, None)
 basement_stair_out = Room('Basement Staircase', 'You are on a staircase and there is a path that looks from your angle'
                           'to be a dead end to your south,\nthough it may be worth checking out.\nThere are stairs to'
@@ -411,7 +412,7 @@ class TV(Item):
 
 class Character(object):
     def __init__(self, name, description, health, dialogue, status_effect, inventory, target,
-                 weapon=Weapon("Hands", "Your fists", 10, 1)):
+                 weapon=Weapon("Hands", "Your fists", 10, 0)):
         self.name = name
         self.description = description
         self.health = health
@@ -428,7 +429,7 @@ class Character(object):
 
     def attack(self, target):
         hit_chance = random.randint(1, 100)
-        if hit_chance >= 50:
+        if hit_chance >= 65:
             target.injure(self.weapon.damage)
 
     def death(self):
@@ -461,10 +462,12 @@ class Bomber(Terrorist):
         self.health -= 290
 
 
+mc = Character('You', 'Your own self', '150', None, None, 10, None, weapon=Weapon("Hands", "Your fists", 10, 0))
+
 current_node = spawn
 miscCommands = ['yeet', 'jump', 'shout', 'cry', 'yell']
-directions = ['north', 'south', 'east', 'west', 'northwest', 'southwest', 'northeast', 'southeast']
-short_directions = ['n', 's', 'e', 'w', 'nw', 'sw', 'ne', 'se']
+directions = ['north', 'south', 'east', 'west', 'northwest', 'southwest', 'northeast', 'southeast', 'up', 'down']
+short_directions = ['n', 's', 'e', 'w', 'nw', 'sw', 'ne', 'se', 'u', 'd']
 suicide = 'kill self'
 while True:
     print(current_node.name)  # self.name(?)
@@ -477,7 +480,10 @@ while True:
         try:
             current_node.move(command)
         except KeyError:
-            print("That's a wall. Those are typically solid and not a lot of things your size can pass through those.")
+            if command in ['up', 'down']:
+                print('There are no stairs to do that with!')
+            else:
+                print("That's a wall. Those are typically solid and not a lot of things your size can pass through those.")
     elif command == 'YEET':
         print('This b**** is empty! YEET!!')
     elif command == 'JUMP':
