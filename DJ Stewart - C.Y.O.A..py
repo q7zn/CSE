@@ -462,7 +462,8 @@ class Bomber(Terrorist):
         self.health -= 290
 
 
-mc = Character('You', 'Your own self', '150', None, None, 10, None, weapon=Weapon("Hands", "Your fists", 10, 0))
+mc = Character('You', 'Your own self', '150', None, None, [], None, Weapon("Hands", "Your fists", 10, 0))
+
 
 current_node = spawn
 miscCommands = ['yeet', 'jump', 'shout', 'cry', 'yell']
