@@ -3,7 +3,7 @@ import random
 
 class Room(object):
     def __init__(self, name, description, north, south, east, west, northwest, southwest, northeast, southeast, up,
-                 down):
+                 down, item1, item2, item3):
         self.description = description
         self.name = name
         self.north = north
@@ -16,53 +16,58 @@ class Room(object):
         self.northwest = northwest
         self.up = up
         self.down = down
+        self.item1 = item1
+        self.item2 = item2
+        self.item3 = item3
 
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
 
 
-
 spawn = Room('Stair Alley', 'You wake up and find yourself in an alley with no recollection of what happened or why '
              'you\nare here. There are two sets of stairs, one to your north that leads up and one to your northwest\n'
              'that leads down.', 'side_stair', None, None, 'side_stair', 'basement_stair_out', None, None, None, None,
-             None)
+             None, None, None, None)
 side_stair = Room('Side Staircase', 'You are on a staircase with two flights that leads up to the second and third '
                   'floor of a large building. \nYou stand on the second floor platform with a door to your west. \nThe' 
                   ' third floor door is to your south. There is an alley to your east.', None, 'storage_corridor',
-                  'spawn', 'laundry_room', 'basement_entrance', None, None, None, None, None)
+                  'spawn', 'laundry_room', 'basement_entrance', None, None, None, None, None, None, None, None)
 basement_stair_out = Room('Basement Staircase', 'You are on a staircase and there is a path that looks from your angle'
                           'to be a dead end to your south,\nthough it may be worth checking out.\nThere are stairs to'
                           ' your east and west.', None, 'briefing_room', 'side_stair', 'front_access', None, None, None,
-                          None, None, None)
+                          None, None, None, None, None, None)
 briefing_room = Room('Briefing Room', 'You are in a room with a few projectors and some desks.\nThere is a door leading'
                      ' outside to your east, and there is a hallway to your west.\nOne of the desks, the one to your '
                      'southwest, has a slightly open drawer.', 'basement_stair', None, 'basement_stair',
-                     'basement_corridor', None, 'brief_desk', None, 'brief_desk', None, None)
+                     'basement_corridor', None, 'brief_desk', None, None, None, None, 'Backpack', None, None)
 front_access = Room('Front Access', 'A door wide enough for two people to enter side by side stands to your south. '
                     'There is a set of stairs leading down to your east.', None, 'main_corridor', 'basement_stair',
-                    None, None, None, None, None, None, None)
+                    None, None, None, None, None, None, None, None, None, None)
 garage_corridor = Room('Garage Hall', 'You are in a hallway that is not too long. There is a garage to your west, and '
                        'a long corridor to your east. There is a kitchen to your south.', None, 'kitchen',
-                       'main_corridor', 'garage', None, None, None, None, None, None)
+                       'main_corridor', 'garage', None, None, None, None, None, None, None, None, None)
 main_corridor = Room('Main Corridor', 'You are in a long hallway with many rooms on both sides. There is an exit to the'
                      ' outside to your north, a kitchen to your southwest, and another hallway to your west. There is a'
                      ' room with some TVs in another room to your northwest, and a kitchen to the southwest of your '
                      'position. There are stairs that lead up and down to the south. To the southeast is a room with a '
                      'table in the center, with quite a few creepy mannequins around it. Your gut tells you to avoid '
                      "that room, but you've never been one to listen to your gut.", 'front_access', 'main_stairs_1st',
-                     None, 'garage_corridor', 'tv_room', 'kitchen', 'piano_lounge', 'dining_room', None, None)
+                     None, 'garage_corridor', 'tv_room', 'kitchen', 'piano_lounge', 'dining_room', None, None, None,
+                     None, None)
 main_stairs_1st = Room('Main Stairs', 'You are on a staircase that leads up to the second floor and down to the '
-                       'basement. There is a hallway to your north with lots of doors in it', 'main_corridor', None,
-                       None, None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm')
+                       'basement. There is a hallway to your north with lots of doors in it to the north.',
+                       'main_corridor', None, None, None, None, None, None, None, 'main_stairs_2nd', 'main_stairs_bm',
+                       None, None, None)
 brief_desk = Room('Briefing Room', 'You are in the corner of the briefing room, behind a desk. The drawer, upon closer'
                   'inspection, is locked, but could easily be forced open. You can move northeast outside, or northwest'
-                  'to the corridor.', None, None, None, None, 'bm_corridor', None, 'basement_stair', None, None, None)
+                  'to the corridor.', None, None, None, None, 'bm_corridor', None, 'basement_stair', None, None, None,
+                  None, None, None)
 laundry_room = Room('Laundry Room', 'You are in a room with a wall directly in front of you that spans almost the whole'
                     ' way to the wall to your south. \nThere is an opening, however, to your southwest end of the '
                     'extended wall. There is a door to your east. There are many washing machines and related '
                     '\nappliances in the room. They might have something in them.', 'laundry_machines', None,
-                    'side_stairs', None, None, 'laundry_inner', None, None, None, None)
+                    'side_stairs', None, None, 'laundry_inner', None, None, None, None )
 laundry_inner = Room('Laundry Room', 'You have moved into the part of the laundry room that is closer to the inside of '
                      'the building. There is a wall that extends from the north end of the room almost to the south '
                      'wall, but the there is an opening. It looks odd from this side, almost like it was blown open by'
@@ -100,20 +105,21 @@ master_bed = Room('Master Bedroom', 'You are in a bedroom with a box of supplies
                   'are others still that look like grenades, but less lethal and more cylindrical. They all have metal '
                   'ends. They all feel dangerous, but some seem like you need a bigger tool to use them. There is a '
                   'a laundry room to your northeast. A short corridor lies to your south.', None, 'f_2nd_corridor',
-                  None, None, None, None, 'laundry_inner', 'bathroom', None, None)
+                  None, None, None, None, 'laundry_inner', 'bathroom', None, None, 'Armor', None, None)
 basement_stair_in = Room('Basement Stairs', 'You are on a stair case that leads down to basement corridor and up to the'
                          ' first floor.', 'basement_corridor', None, None, None, None, None, None, None,
-                         'main_stairs', None)
+                         'main_stairs', None, None, None, None)
 stairs_2nd = Room('Second Floor Stairs', 'You are on a flight of stairs that leads up to the third floor, and down to '
                   'the first floor. There is also a path north to a short hallway.', None, None, None, None, None, None,
-                  None, None, 'stairs_3rd', 'main_stairs_1st')
+                  None, None, 'stairs_3rd', 'main_stairs_1st', None, None, None)
 stairs_3rd = Room('Third floor stairs', 'There is a bent corridor to your north and the second floor is below you.',
-                  'storage_corridor_s', None, None, None, None, None, None, None, None, 'stairs_2nd')
+                  'storage_corridor_s', None, None, None, None, None, None, None, None, 'stairs_2nd', None, None, None)
 storage = Room('Storage', 'You are in a room with lots of supplies for the base. There are so many things that could be'
                'of use to you it boggles you. There are a few guns, but you have a feeling there will be more in the '
                'boxes and crates lying around but from what you can see there is a SuperNova shotgun, a R4C assault'
                'rifle, and a Desert Eagle 50 caliber pistol. There are two metal crates that are unlocked. There is a '
-               'door to your east.', None, None, 'storage_corridor_s', None, None, None, None, None, None, None)
+               'door to your east.', None, None, 'storage_corridor_s', None, None, None, None, None, None, None, 'R4C',
+               'D50', 'Supernova')
 workshop = Room('Workshop', 'There is a workbench and a boatload of tools you have never seen but somehow know how to '
                 'use. There are enough tools and machines to craft very complex things, maybe even small firearms. '
                 'There are doors to your north and west that lead into the storage corridor.', 'storage_corridor_e',
@@ -169,10 +175,11 @@ class Item(object):
 
     def drop(self):
         print("You drop the %s" % self.name)
-
+        mc.inventory.remove(self.name)
     def pick_up(self):
         if self.weight < 51:
             print("You pick up the %s" % self.name)
+            mc.inventory.append(self.name)
         else:
             print("You try to pick up the %s, but it is too heavy." % self.name)
 
@@ -484,7 +491,8 @@ while True:
             if command in ['up', 'down']:
                 print('There are no stairs to do that with!')
             else:
-                print("That's a wall. Those are typically solid and not a lot of things your size can pass through those.")
+                print("That's a wall. Those are typically solid and not a lot of things your size can pass through "
+                      "those.")
     elif command == 'YEET':
         print('This b**** is empty! YEET!!')
     elif command == 'JUMP':
