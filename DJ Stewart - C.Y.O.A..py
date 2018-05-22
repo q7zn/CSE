@@ -1,5 +1,6 @@
 import random
 
+binventory = []
 
 class Item(object):
     def __init__(self, name, weight, value, description):
@@ -506,7 +507,7 @@ class Bomber(Terrorist):
         self.health -= 290
 
 
-mc = Character('You', 'Your own self', '150', None, None, [], None, Weapon("Hands", "Your fists", 10, 0))
+mc = Character('You', 'Your own self', '150', None, None, binventory, None, Weapon("Hands", "Your fists", 10, 0))
 
 
 current_node = spawn
@@ -530,6 +531,11 @@ while True:
             else:
                 print("That's a wall. Those are typically solid and not a lot of things your size can pass through "
                       "those.")
+    elif command == 'pick up':
+        print('What do you want to pick up?')
+        if current_node.item1.item2.item3.item4.item5.item6.item7 is None:
+
+
     elif command == 'YEET':
         print('This b**** is empty! YEET!!')
     elif command == 'JUMP':
